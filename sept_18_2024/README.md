@@ -1,0 +1,1 @@
+**Comparing char with `==` is faster than `<` or `>` operators**
