@@ -2,22 +2,37 @@
 
 using namespace std;
 
-int main() {
+int main()
+{
     int t;
     cin >> t;
-    while (t--) {
+    while (t--)
+    {
         string s;
         cin >> s;
 
-        if (s.size() < 3) {cout << "NO" << endl; } else if (s[0] != '1' || s[1] != '0') {
+        if (s.size() < 3)
+        {
             cout << "NO" << endl;
-        } else if (s[2] == '0') {cout << "NO" << endl;}
-         else {
+        }
+        else if (s[0] != '1' || s[1] != '0')
+        {
+            cout << "NO" << endl;
+        }
+        else if (s[2] == '0')
+        {
+            cout << "NO" << endl;
+        }
+        else
+        {
             s.erase(0, 2);
 
-            if (stoi(s) >= 2) {
+            if (stoi(s) >= 2)
+            {
                 cout << "YES" << endl;
-            } else {
+            }
+            else
+            {
                 cout << "NO" << endl;
             }
         }
