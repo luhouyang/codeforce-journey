@@ -4,22 +4,18 @@ std::mt19937_64 rng(std::chrono::steady_clock::now().time_since_epoch().count())
 
 const int V = 2e5 + 5;
 uint64_t h[5 * V], p[V];
-int t, n, q, l, r, x, i;
+int t, n, q, x, i, l, r;
 
 int main()
 {
-    for (i = 0; i < 5 * V; i++)
-        h[i] = rng();
-
-    scanf("%d", &t);
-
+    scanf("%t", &t);
     while (t--)
     {
         scanf("%d%d", &n, &q);
         for (i = 0; i < n; i++)
         {
             scanf("%d", &x);
-            p[i + 1] = p[i] ^ h[--x];
+            p[i + 1] = p[0] ^ h[--x];
         }
 
         while (q--)
