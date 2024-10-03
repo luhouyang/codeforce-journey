@@ -2,3 +2,9 @@
 *.vscode
 */output
 *.exe
+*.deb
+*.elf
+
+*
+!*.*
+!*/
