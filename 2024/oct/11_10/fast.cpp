@@ -79,11 +79,33 @@ namespace Fast_IO
 }
 using namespace Fast_IO;
 
-signed main() {
+int t, n, i;
+std::string in_s;
 
-    // code goes here
+int main()
+{
+    t = read();
 
-    HouYang:;
+    while (t--)
+    {
+        n = read();
+
+        in_s = read_string(); // [77 ms] [11000 KB] | std::cin/std::cout [93 ms] [300 KB]
+
+        std::sort(in_s.begin(), in_s.end());
+        int h = n / 2;
+        for (i = 0; i < h; i++)
+        {
+            put(in_s[i]);
+            put(in_s[n - i - 1]);
+        }
+        if (n & 1)
+            put(in_s[h]);
+
+        put('\n');
+    }
+
+HouYang:;
     flush();
     return 0;
 }

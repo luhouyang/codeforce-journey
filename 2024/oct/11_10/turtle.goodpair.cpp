@@ -23,24 +23,6 @@ namespace Fast_IO
             x = (x << 1) + (x << 3) + (fc ^ 48), fc = getchar();
         return x * t;
     }
-    // Function to read string, not space efficient
-    inline std::string read_string()
-    {
-        std::string result;
-        char fc(getchar());
-        // Skip any non-alphabetic characters initially
-        while (!isalpha(fc) && fc != EOF)
-        {
-            fc = getchar();
-        }
-        // Append alphabetic characters to the string
-        while (isalpha(fc))
-        {
-            result += fc;
-            fc = getchar();
-        }
-        return result;
-    }
     inline void flush()
     {
         fwrite(out, 1, length, stdout);
@@ -79,11 +61,69 @@ namespace Fast_IO
 }
 using namespace Fast_IO;
 
-signed main() {
+int t, n, i, j;
 
-    // code goes here
+signed main()
+{
+    // t = read();
+    std::cin >> t;
 
-    HouYang:;
+    while (t--)
+    {
+        // n = read();
+        std::cin >> n;
+
+        std::string in;
+        std::cin >> in;
+
+        // int c = 0;
+        bool same = false;
+        char matcher = in[0];
+
+        for (i = 0; i < n - 1; i++)
+        {
+
+            if (matcher == in[i + 1])
+            {
+                // c++;
+
+                // if (c == 1)
+                // {
+                //     c = 0;
+
+                for (j = i + 2; j < n; j++)
+                {
+                    if (in[j] != matcher)
+                    {
+                        in[i+1] = in[j];
+                        in[j] = matcher;
+                        break;
+                    }
+                    else if (j + 1 == n)
+                    {
+                        same = true;
+                    }
+                }
+
+                if (same)
+                {
+                    break;
+                }
+                // }
+            }
+            else
+            {
+                // c = 0;
+                matcher = in[i + 1];
+            }
+        }
+
+        // put(in);
+        // put('\n');
+        std::cout << in << std::endl;
+    }
+
+HouYang:;
     flush();
     return 0;
 }

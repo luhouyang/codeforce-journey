@@ -23,24 +23,6 @@ namespace Fast_IO
             x = (x << 1) + (x << 3) + (fc ^ 48), fc = getchar();
         return x * t;
     }
-    // Function to read string, not space efficient
-    inline std::string read_string()
-    {
-        std::string result;
-        char fc(getchar());
-        // Skip any non-alphabetic characters initially
-        while (!isalpha(fc) && fc != EOF)
-        {
-            fc = getchar();
-        }
-        // Append alphabetic characters to the string
-        while (isalpha(fc))
-        {
-            result += fc;
-            fc = getchar();
-        }
-        return result;
-    }
     inline void flush()
     {
         fwrite(out, 1, length, stdout);
@@ -79,11 +61,33 @@ namespace Fast_IO
 }
 using namespace Fast_IO;
 
-signed main() {
+int t, n;
 
-    // code goes here
+int main()
+{
+    // int t;
+    std::cin >> t;
+    // t = read();
 
-    HouYang:;
-    flush();
-    return 0;
+    while (t--)
+    {
+        // int n;
+        std::cin >> n;
+        // n = read();
+
+        std::string s;
+        std::cin >> s;
+        
+        sort(s.begin(), s.end());
+        for (int i = 0; i < n / 2; i++)
+        {
+            std::cout << s[i] << s[n - i - 1];
+            // put(s[i] + s[n - i - 1]);
+        }
+        if (n & 1)
+            std::cout << s[n / 2];
+            // put(s[n / 2]);
+        std::cout << std::endl;
+        // put('\n');
+    }
 }
