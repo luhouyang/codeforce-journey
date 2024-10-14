@@ -79,44 +79,62 @@ namespace Fast_IO
 }
 using namespace Fast_IO;
 
-/*
-// UNCOMMENT TO TEST EXECUTION TIME
-#include <chrono>
-using namespace std::chrono;
+#include <vector>
+#define ll long long
+using namespace std;
 
-void getExecTime(void (*func)()) {
-    auto start = high_resolution_clock::now();
+int t, n, i;
+// ll mx, su, a;
+ll a;
 
-    // call function here
-    func();
+// ll solve(vector<ll> ar)
+// {
+//     int r = ar.size() - 1;
+//     int l = r / 2;
+//     for (i = 0; i < l; i++)
+//     {
+//         vector.push()
+//     }
+// }
 
-    auto stop = high_resolution_clock::now();
+signed main()
+{
 
-    auto duration = duration_cast<microseconds>(stop - start);
+    t = read();
 
-    std::cout << duration.count() << " ms" << std::endl;
-}
+    while (t--)
+    {
+        n = read();
+        vector<ll> ar;
 
-void fastIO() {
-    // int a = read();
-    int a = 123;
-    print(a); put('\n');
-}
+        // mx = 0;
+        // su = 0;
+        for (i = 0; i < n; i++)
+        {
+            a = read();
+            ar.push_back(a);
+            // a = read();
+            // su += a;
+            // if (a > mx) {
+            // mx = a;
+            // su -= a;
+            // }
+        }
 
-void stdIO() { 
-    int a = 123;
-    // std::cin >> a;
-    std::cout << a << std::endl;
-}
-*/
+        sort(ar.begin(), ar.end());
 
-signed main() {
+        a = (ar[0] + ar[1]) / 2;
+        for (i = 2; i < n; i++)
+        {
+            a = (a + ar[i]) / 2;
+        }
 
-    // code goes here
-    // getExecTime(&fastIO);
-    // getExecTime(&stdIO);
+        // print(solve(ar));
+        print(a);
+        put('\n');
+    }
 
-    HouYang:;
+HouYang:;
     flush();
     return 0;
 }

@@ -23,24 +23,6 @@ namespace Fast_IO
             x = (x << 1) + (x << 3) + (fc ^ 48), fc = getchar();
         return x * t;
     }
-    // Function to read string, not space efficient
-    inline std::string read_string()
-    {
-        std::string result;
-        char fc(getchar());
-        // Skip any non-alphabetic characters initially
-        while (!isalpha(fc) && fc != EOF)
-        {
-            fc = getchar();
-        }
-        // Append alphabetic characters to the string
-        while (isalpha(fc))
-        {
-            result += fc;
-            fc = getchar();
-        }
-        return result;
-    }
     inline void flush()
     {
         fwrite(out, 1, length, stdout);
@@ -79,44 +61,69 @@ namespace Fast_IO
 }
 using namespace Fast_IO;
 
-/*
-// UNCOMMENT TO TEST EXECUTION TIME
-#include <chrono>
-using namespace std::chrono;
+int t, n, i, j;
 
-void getExecTime(void (*func)()) {
-    auto start = high_resolution_clock::now();
+signed main()
+{
+    // t = read();
+    std::cin >> t;
 
-    // call function here
-    func();
+    while (t--)
+    {
+        // n = read();
+        std::cin >> n;
 
-    auto stop = high_resolution_clock::now();
+        std::string in;
+        std::cin >> in;
 
-    auto duration = duration_cast<microseconds>(stop - start);
+        // int c = 0;
+        bool same = false;
+        char matcher = in[0];
 
-    std::cout << duration.count() << " ms" << std::endl;
-}
+        for (i = 0; i < n - 1; i++)
+        {
 
-void fastIO() {
-    // int a = read();
-    int a = 123;
-    print(a); put('\n');
-}
+            if (matcher == in[i + 1])
+            {
+                // c++;
 
-void stdIO() { 
-    int a = 123;
-    // std::cin >> a;
-    std::cout << a << std::endl;
-}
-*/
+                // if (c == 1)
+                // {
+                //     c = 0;
 
-signed main() {
+                for (j = i + 2; j < n; j++)
+                {
+                    if (in[j] != matcher)
+                    {
+                        in[i+1] = in[j];
+                        in[j] = matcher;
+                        break;
+                    }
+                    else if (j + 1 == n)
+                    {
+                        same = true;
+                    }
+                }
 
-    // code goes here
-    // getExecTime(&fastIO);
-    // getExecTime(&stdIO);
+                if (same)
+                {
+                    break;
+                }
+                // }
+            }
+            else
+            {
+                // c = 0;
+                matcher = in[i + 1];
+            }
+        }
 
-    HouYang:;
+        // put(in);
+        // put('\n');
+        std::cout << in << std::endl;
+    }
+
+HouYang:;
     flush();
     return 0;
 }

@@ -23,24 +23,6 @@ namespace Fast_IO
             x = (x << 1) + (x << 3) + (fc ^ 48), fc = getchar();
         return x * t;
     }
-    // Function to read string, not space efficient
-    inline std::string read_string()
-    {
-        std::string result;
-        char fc(getchar());
-        // Skip any non-alphabetic characters initially
-        while (!isalpha(fc) && fc != EOF)
-        {
-            fc = getchar();
-        }
-        // Append alphabetic characters to the string
-        while (isalpha(fc))
-        {
-            result += fc;
-            fc = getchar();
-        }
-        return result;
-    }
     inline void flush()
     {
         fwrite(out, 1, length, stdout);
@@ -79,44 +61,39 @@ namespace Fast_IO
 }
 using namespace Fast_IO;
 
-/*
-// UNCOMMENT TO TEST EXECUTION TIME
-#include <chrono>
-using namespace std::chrono;
+int t, n, m, q, a, to[200005], b, i;
 
-void getExecTime(void (*func)()) {
-    auto start = high_resolution_clock::now();
+signed main()
+{
 
-    // call function here
-    func();
+    t = read();
+    while (t--)
+    {
+        n = read();
+        m = read();
+        q = read();
 
-    auto stop = high_resolution_clock::now();
+        // FOR IO/Iteration use variables, declare before main
+        int ans = 1, cur = 0; // initializing variables in loop [62 ms]
+        // ans = 1; cur = 0; // resetting intitialized variables [77 ms]
 
-    auto duration = duration_cast<microseconds>(stop - start);
+        for (i = 1; i <= n; i++)
+        {
+            a = read();
+            to[a] = i;
+        }
 
-    std::cout << duration.count() << " ms" << std::endl;
-}
+        for (i = 1; i <= m; i++)
+        {
+            b = read();
+            // ans &= (to[b] <= cur + 1) // bit wise comparison [77 ms]
+            ans = ans && (to[b] <= cur + 1); // can perform shortcut evaluation [62 ms]
+            cur = std::max(cur, to[b]);
+        }
 
-void fastIO() {
-    // int a = read();
-    int a = 123;
-    print(a); put('\n');
-}
+        put(ans ? "YA\n" : "TIDAK\n");
+    }
 
-void stdIO() { 
-    int a = 123;
-    // std::cin >> a;
-    std::cout << a << std::endl;
-}
-*/
-
-signed main() {
-
-    // code goes here
-    // getExecTime(&fastIO);
-    // getExecTime(&stdIO);
-
-    HouYang:;
     flush();
     return 0;
 }

@@ -79,44 +79,73 @@ namespace Fast_IO
 }
 using namespace Fast_IO;
 
-/*
-// UNCOMMENT TO TEST EXECUTION TIME
-#include <chrono>
-using namespace std::chrono;
+// int t;
+// int rr[4];
 
-void getExecTime(void (*func)()) {
-    auto start = high_resolution_clock::now();
+// signed main()
+// {
 
-    // call function here
-    func();
+//     t = read();
 
-    auto stop = high_resolution_clock::now();
+//     while (t--)
+//     {
+//         rr[0] = read();
+//         rr[1] = read();
+//         rr[2] = read();
+//         rr[3] = read();
 
-    auto duration = duration_cast<microseconds>(stop - start);
+//         // std::sort(std::begin(rr), std::end(rr));
 
-    std::cout << duration.count() << " ms" << std::endl;
-}
+//         // print(((rr[0] ^ rr[1] ? 1 : 0) + (rr[2] - rr[1]) + (rr[2] ^ rr[3] ? 1 : 0)));
+//         put('\n');
+//     }
+int t, l, r, L, R;
 
-void fastIO() {
-    // int a = read();
-    int a = 123;
-    print(a); put('\n');
-}
+signed main()
+{
 
-void stdIO() { 
-    int a = 123;
-    // std::cin >> a;
-    std::cout << a << std::endl;
-}
-*/
+    t = read();
 
-signed main() {
+    while (t--)
+    {
+        l = read();
+        r = read();
+        L = read();
+        R = read();
 
-    // code goes here
-    // getExecTime(&fastIO);
-    // getExecTime(&stdIO);
+        if (l > L)
+        {
+            std::swap(l, L);
+            std::swap(r, R);
+        }
+        if (r < L)
+        {
+            print(1);
+            put('\n');
+        }
+        else
+        {
+            int UBR = std::max(l, L);
+            int LBR = std::min(r, R);
 
-    HouYang:;
+            int range = LBR - UBR;
+
+            if (std::min(l, L) != UBR)
+            {
+                range++;
+            }
+
+            if (std::max(r, R) != LBR)
+            {
+                range++;
+            }
+
+            print(range);
+            put('\n');
+        }
+    }
+
+HouYang:;
     flush();
     return 0;
 }

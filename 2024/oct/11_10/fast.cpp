@@ -79,44 +79,33 @@ namespace Fast_IO
 }
 using namespace Fast_IO;
 
-/*
-// UNCOMMENT TO TEST EXECUTION TIME
-#include <chrono>
-using namespace std::chrono;
+int t, n, i;
+std::string in_s;
 
-void getExecTime(void (*func)()) {
-    auto start = high_resolution_clock::now();
+int main()
+{
+    t = read();
 
-    // call function here
-    func();
+    while (t--)
+    {
+        n = read();
 
-    auto stop = high_resolution_clock::now();
+        in_s = read_string(); // [77 ms] [11000 KB] | std::cin/std::cout [93 ms] [300 KB]
 
-    auto duration = duration_cast<microseconds>(stop - start);
+        std::sort(in_s.begin(), in_s.end());
+        int h = n / 2;
+        for (i = 0; i < h; i++)
+        {
+            put(in_s[i]);
+            put(in_s[n - i - 1]);
+        }
+        if (n & 1)
+            put(in_s[h]);
 
-    std::cout << duration.count() << " ms" << std::endl;
-}
+        put('\n');
+    }
 
-void fastIO() {
-    // int a = read();
-    int a = 123;
-    print(a); put('\n');
-}
-
-void stdIO() { 
-    int a = 123;
-    // std::cin >> a;
-    std::cout << a << std::endl;
-}
-*/
-
-signed main() {
-
-    // code goes here
-    // getExecTime(&fastIO);
-    // getExecTime(&stdIO);
-
-    HouYang:;
+HouYang:;
     flush();
     return 0;
 }
