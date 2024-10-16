@@ -79,44 +79,74 @@ namespace Fast_IO
 }
 using namespace Fast_IO;
 
-/*
-// UNCOMMENT TO TEST EXECUTION TIME
-#include <chrono>
-using namespace std::chrono;
+int t;
+std::string a, b;
 
-void getExecTime(void (*func)()) {
-    auto start = high_resolution_clock::now();
+signed main()
+{
+    std::ios_base::sync_with_stdio(false);
+    std::cin.tie(NULL);
 
-    // call function here
-    func();
+    // t = read();
+    scanf("%d", &t);
 
-    auto stop = high_resolution_clock::now();
+    while (t--)
+    {
+        // a = read_string();
+        // b = read_string();
+        std::cin >> a >> b;
 
-    auto duration = duration_cast<microseconds>(stop - start);
+        if (a.size() > b.size())
+        {
+            std::swap(a, b);
+        }
 
-    std::cout << duration.count() << " ms" << std::endl;
-}
+        int al = a.size(), bl = b.size(); // [46 ms]
+        // int al = a.length(), bl = b.length(); // [62 ms]
 
-void fastIO() {
-    // int a = read();
-    int a = 123;
-    print(a); put('\n');
-}
+        int i = 0;
+        for (; i < al; i++)
+        {
+            if (a[i] != b[i])
+            {
+                break;
+            }
+        }
+        bl += std::min(al - i + 1, al);
+        // print((bl + std::min(al - i + 1, al)));
+        printf("%d\n", bl);
 
-void stdIO() { 
-    int a = 123;
-    // std::cin >> a;
-    std::cout << a << std::endl;
-}
-*/
+        // if (al < bl)
+        // {
+        //     i = 0;
+        //     for (; i < al; i++)
+        //     {
+        //         if (a[i] != b[i])
+        //         {
+        //             break;
+        //         }
+        //     }
+        //     // print((bl + std::min(al - i + 1, al)));
+        //     printf("%d\n", (bl + std::min(al - i + 1, al)));
+        // }
+        // else
+        // {
+        //     i = 0;
+        //     for (; i < bl; i++)
+        //     {
+        //         if (a[i] != b[i])
+        //         {
+        //             break;
+        //         }
+        //     }
+        //     // print((al + std::min(bl - i + 1, bl)));
+        //     printf("%d\n", (al + std::min(bl - i + 1, bl)));
+        // }
 
-signed main() {
+        // put('\n');
+    }
 
-    // code goes here
-    // getExecTime(&fastIO);
-    // getExecTime(&stdIO);
-
-    HouYang:;
-    flush();
+HouYang:;
+    // flush();
     return 0;
 }
